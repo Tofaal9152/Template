@@ -9,13 +9,10 @@ export const app = express();
 dotenv.config();
 
 // middlewares
+app.use(cors({ origin: "*", credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
+app.use(bodyParser.urlencoded({ extended: true }));
 // Routers
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/todo", todoRouter);
